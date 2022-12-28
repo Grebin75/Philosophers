@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sleep.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 11:31:08 by grebin            #+#    #+#             */
-/*   Updated: 2022/12/19 14:44:27 by grebin           ###   ########.fr       */
+/*   Created: 2022/12/22 20:15:36 by grebin            #+#    #+#             */
+/*   Updated: 2022/12/22 20:38:30 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-
-t_prog *this()
+int	gosleep(t_philo *philo)
 {
-    static t_prog 	prog;
-    
-    return(&prog);
-}
+	t_uli	sleeping;
+	t_uli	start_sleep;
 
-void    printerror(char *str, int error)
-{
-	int	i;
-
-	i = -1;
-    if (str)
-        printf("%s\n", str);
-	while (++i < this()->av[0])
-			free(this()->philos[i]);
-		free(this()->philos);
-	exit(error);
-}
-
-int main(int ac, char **av)
-{	
-	parse(ac, av);
-	init_threads();
-	printerror(NULL, FALSE);
+	start_sleep = current_time();
+	sleeping = 0;
+	while (!dead(philo) && sleeping <= (t_uli)this()->av[3])
+	{
+		sleeping = time_diff(start_sleep, current_time());
+		usleep(100);
+	}
+	return (dead(philo));
 }

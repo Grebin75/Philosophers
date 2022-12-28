@@ -13,6 +13,7 @@
 typedef struct s_prog	t_prog;
 typedef struct s_philo	t_philo;
 typedef struct s_time	t_time;
+typedef struct s_forks	t_forks;
 
 typedef unsigned long int t_uli;
 
@@ -20,6 +21,7 @@ typedef unsigned long int t_uli;
 struct s_prog
 {
 	t_uli	start;
+	pthread_mutex_t **forks;
 	int		av[5];
 	t_philo	**philos;
 } ;
@@ -45,6 +47,10 @@ void    printerror(char *str, int error);
 int	ft_atoi(const char *nptr);
 void	parse(int ac, char **av);
 void	init_philo();
+void	init_forks();
+void	init_threads();
+int		dead(t_philo *philo);
+int		gosleep(t_philo *philo);
 
 t_uli current_time();
 t_uli time_diff(t_uli start, t_uli end);

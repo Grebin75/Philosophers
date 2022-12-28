@@ -3,6 +3,9 @@ SRCS = $(SRCS_DIR)/main.c \
 		$(SRCS_DIR)/parse.c \
 		$(SRCS_DIR)/philo.c \
 		$(SRCS_DIR)/time.c \
+		$(SRCS_DIR)/threads.c \
+		$(SRCS_DIR)/death.c \
+		$(SRCS_DIR)/sleep.c \
 
 
 SRCS_DIR = SRCS
@@ -11,7 +14,7 @@ OBJS = $(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
 
 OBJS_DIR = objs
 
-FLAGS = -Werror -Wall -Wextra -pthread -g -fsanitize=address
+FLAGS = -Werror -Wall -Wextra -pthread -g -fsanitize=thread
 CC = gcc
 RM = rm -rf
 NAME = philo

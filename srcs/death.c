@@ -1,41 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   death.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 11:31:08 by grebin            #+#    #+#             */
-/*   Updated: 2022/12/19 14:44:27 by grebin           ###   ########.fr       */
+/*   Created: 2022/12/22 13:03:30 by grebin            #+#    #+#             */
+/*   Updated: 2022/12/22 20:18:39 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-
-t_prog *this()
+int	dead(t_philo *philo)
 {
-    static t_prog 	prog;
-    
-    return(&prog);
-}
-
-void    printerror(char *str, int error)
-{
-	int	i;
-
-	i = -1;
-    if (str)
-        printf("%s\n", str);
-	while (++i < this()->av[0])
-			free(this()->philos[i]);
-		free(this()->philos);
-	exit(error);
-}
-
-int main(int ac, char **av)
-{	
-	parse(ac, av);
-	init_threads();
-	printerror(NULL, FALSE);
+	return (time_diff(philo->last_meal, current_time()) >= (t_uli)this()->av[1]);
 }
