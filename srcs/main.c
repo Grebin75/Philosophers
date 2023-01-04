@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 11:31:08 by grebin            #+#    #+#             */
-/*   Updated: 2022/12/19 14:44:27 by grebin           ###   ########.fr       */
+/*   Updated: 2023/01/04 09:54:12 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void    printerror(char *str, int error)
 	i = -1;
     if (str)
         printf("%s\n", str);
+	if (this()->philos[0]->death)
+		pthread_mutex_destroy(&this()->philos[0]->death->reaper);
 	while (++i < this()->av[0])
 			free(this()->philos[i]);
 		free(this()->philos);

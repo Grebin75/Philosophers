@@ -14,16 +14,22 @@ typedef struct s_prog	t_prog;
 typedef struct s_philo	t_philo;
 typedef struct s_time	t_time;
 typedef struct s_forks	t_forks;
+typedef struct s_death	t_death;
 
 typedef unsigned long int t_uli;
 
+struct s_death
+{
+	int					dead;
+	pthread_mutex_t		reaper;
+};
 
 struct s_prog
 {
-	t_uli	start;
+	t_uli			start;
 	pthread_mutex_t **forks;
-	int		av[5];
-	t_philo	**philos;
+	int				av[5];
+	t_philo			**philos;
 } ;
 
 struct s_time
@@ -40,11 +46,12 @@ struct s_philo
 	int			num_meals;
 	pthread_t 	philo;
 	t_time		time;
+	t_death		*death;
 };
 
 t_prog *this();
 void    printerror(char *str, int error);
-int	ft_atoi(const char *nptr);
+int		ft_atoi(const char *nptr);
 void	parse(int ac, char **av);
 void	init_philo();
 void	init_forks();
