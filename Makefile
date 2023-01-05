@@ -6,6 +6,7 @@ SRCS = $(SRCS_DIR)/main.c \
 		$(SRCS_DIR)/threads.c \
 		$(SRCS_DIR)/death.c \
 		$(SRCS_DIR)/sleep.c \
+		$(SRCS_DIR)/eat.c \
 
 
 SRCS_DIR = srcs

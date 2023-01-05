@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:38:10 by grebin            #+#    #+#             */
-/*   Updated: 2023/01/04 09:36:36 by grebin           ###   ########.fr       */
+/*   Updated: 2023/01/05 10:46:05 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	*routine(void *arg)
 
 	philo = (t_philo *)arg;
 	philo->last_meal = this()->start;
-	while (!philo->death->dead)
+	while (!dead(philo))
 	{
-		//eat
+		eat(philo);
 		//printf("AV[4] = %i\n", this()->av[4]);
 		if (this()->av[4] != -1 && philo->num_meals == this()->av[4])
 			break;
-		printf("[%lums] %i is sleeping.\n", time_diff(this()->start, current_time()), philo->index);
 		if (gosleep(philo))
 			break ;
-
+		//printf("%i: %lu\n", philo->index, philo->last_meal);
+		printf("[%lums] %i is thinking.\n", time_diff(this()->start, current_time()), philo->index);
 		/* philo->num_meals++;
 		printf("[%lums] %i is eating.\n", time_diff(this()->start, current_time()), philo->index);
 		philo->last_meal = current_time(); */

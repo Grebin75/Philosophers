@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:09:06 by grebin            #+#    #+#             */
-/*   Updated: 2023/01/04 09:42:42 by grebin           ###   ########.fr       */
+/*   Updated: 2023/01/04 16:34:04 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_philo	*create_philo(int index, t_death *death)
 	if (!philo)
 		printerror("Error allocating PHILO STRUCT.", TRUE);
 	philo->index = index + 1;
-	philo->is_death = FALSE;
+	philo->forks_hold = 0;
 	philo->num_meals = 0;
 	philo->last_meal = 0;
 	philo->death = death;

@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:15:36 by grebin            #+#    #+#             */
-/*   Updated: 2022/12/22 20:38:30 by grebin           ###   ########.fr       */
+/*   Updated: 2023/01/04 17:30:23 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	gosleep(t_philo *philo)
 
 	start_sleep = current_time();
 	sleeping = 0;
+	if (!dead(philo))
+		printf("[%lums] %i is sleeping.\n", time_diff(this()->start, current_time()), philo->index);
 	while (!dead(philo) && sleeping <= (t_uli)this()->av[3])
 	{
 		sleeping = time_diff(start_sleep, current_time());

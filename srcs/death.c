@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 13:03:30 by grebin            #+#    #+#             */
-/*   Updated: 2023/01/04 09:53:58 by grebin           ###   ########.fr       */
+/*   Updated: 2023/01/05 10:46:10 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	check_death(t_philo *p)
 
 int	dead(t_philo *philo)
 {
-	check_death(philo);
+	if(check_death(philo))
+		return (TRUE);
 	if (time_diff(philo->last_meal, current_time()) >= (t_uli)this()->av[1])
 	{
 		pthread_mutex_lock(&philo->death->reaper);
