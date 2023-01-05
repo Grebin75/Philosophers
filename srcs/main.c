@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 11:31:08 by grebin            #+#    #+#             */
-/*   Updated: 2023/01/04 15:34:36 by grebin           ###   ########.fr       */
+/*   Updated: 2023/01/05 12:42:33 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void    printerror(char *str, int error)
 	while (++i < this()->av[0])
 			free(this()->philos[i]);
 		free(this()->philos);
+	if (this()->fork_status)
+		free(this()->fork_status);
 	exit(error);
 }
 

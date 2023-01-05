@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:38:10 by grebin            #+#    #+#             */
-/*   Updated: 2023/01/05 10:46:05 by grebin           ###   ########.fr       */
+/*   Updated: 2023/01/05 12:00:03 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*routine(void *arg)
 
 	philo = (t_philo *)arg;
 	philo->last_meal = this()->start;
+	if (philo->index % 2 == 0)
+		usleep(1000);
 	while (!dead(philo))
 	{
 		eat(philo);
