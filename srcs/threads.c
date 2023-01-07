@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:38:10 by grebin            #+#    #+#             */
-/*   Updated: 2023/01/05 12:00:03 by grebin           ###   ########.fr       */
+/*   Updated: 2023/01/07 12:00:28 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,13 @@ void	init_threads()
 	this()->start = current_time();
 	i = -1;
 	while (++i < this()->av[0])
-		if (pthread_create(&this()->philos[i]->philo, NULL, &routine, this()->philos[i]) != 0)
+		if (pthread_create(&this()->philos[i].philo, NULL, &routine, &this()->philos[i]) != 0)
 			printerror("Error creating a thread", TRUE);
 	i = -1;
 	while (++i < this()->av[0])
-		pthread_join(this()->philos[i]->philo, NULL);
+		pthread_join(this()->philos[i].philo, NULL);
 	i = -1;
-/* 	while (++i < this()->av[0])
-		pthread_mutex_destroy(this()->forks[i]); */
+	
+	while (++i < this()->av[0])
+		pthread_mutex_destroy(&this()->forks[i]);
 }

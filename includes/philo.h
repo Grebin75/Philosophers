@@ -28,9 +28,9 @@ struct s_prog
 {
 	int				av[5];
 	int				*fork_status;
-	pthread_mutex_t forks;
+	pthread_mutex_t *forks;
 	t_uli			start;
-	t_philo			**philos;
+	t_philo			*philos;
 } ;
 
 struct s_time

@@ -6,26 +6,23 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:09:06 by grebin            #+#    #+#             */
-/*   Updated: 2023/01/04 16:34:04 by grebin           ###   ########.fr       */
+/*   Updated: 2023/01/07 11:46:40 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-t_philo	*create_philo(int index, t_death *death)
+/* t_philo	*create_philo(int index, t_death *death)
 {
 	t_philo	*philo;
 	
-	philo = malloc(sizeof(t_philo));
-	if (!philo)
-		printerror("Error allocating PHILO STRUCT.", TRUE);
 	philo->index = index + 1;
 	philo->forks_hold = 0;
 	philo->num_meals = 0;
 	philo->last_meal = 0;
 	philo->death = death;
-	return (philo);
-}
+	return (&philo);
+} */
 
 void	init_philo()
 {
@@ -38,5 +35,11 @@ void	init_philo()
 	if (!this()->philos)
 		printerror("Error allocating PHILO ARRAY.", TRUE);
 	while (++i < this()->av[0])
-		this()->philos[i] = create_philo(i, &death);
+	{
+		this()->philos[i].index = i + 1;
+		this()->philos[i].forks_hold = 0;
+		this()->philos[i].num_meals = 0;
+		this()->philos[i].last_meal = 0;
+		this()->philos[i].death = &death;
+	}
 }

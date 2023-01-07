@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:31:40 by grebin            #+#    #+#             */
-/*   Updated: 2023/01/04 17:34:50 by grebin           ###   ########.fr       */
+/*   Updated: 2023/01/07 11:31:41 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	check_fork(t_philo *philo, pthread_mutex_t *mutex, int slot)
 {
 	pthread_mutex_lock(mutex);
 	//printf("FORK: %i\n", this()->fork_status[slot]);
-	if (this()->fork_status[slot] == FALSE)
+	if (this()->fork_status[slot] == TRUE)
 	{
-		this()->fork_status[slot] = TRUE;
+		this()->fork_status[slot] = FALSE;
 		philo->forks_hold += 1;
 		printf("[%lums] %i has taken a fork.\n", time_diff(this()->start, current_time()), philo->index);
 	}
@@ -55,17 +55,19 @@ int		eat(t_philo	*philo)
 	right = (philo->index != this()->av[0]) * (philo->index);
 	while (!dead(philo))
 	{
-		check_fork(philo, &this()->forks, left);
-		check_fork(philo, &this()->forks, right);
+		check_fork(philo, &this()->forks[left], left);
+		check_fork(philo, &this()->forks[right], right);
 		//printf("%i FORKS: %i\n", philo->index, philo->forks_hold);
 		if (philo->forks_hold == 2 && !dead(philo))
 		{
 			if (start_eating(philo))
 			{
-				pthread_mutex_lock(&this()->forks);
-				this()->fork_status[right] = FALSE;
-				this()->fork_status[left] = FALSE;
-				pthread_mutex_unlock(&this()->forks);
+				pthread_mutex_lock(&this()->forks[left]);
+				this()->fork_status[left] = TRUE;
+				pthread_mutex_unlock(&this()->forks[left]);
+				pthread_mutex_lock(&this()->forks[right]);
+				this()->fork_status[right] = TRUE;
+				pthread_mutex_unlock(&this()->forks[right]);
 				break;
 			}
 		}
