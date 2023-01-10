@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils00.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 12:05:35 by grebin            #+#    #+#             */
-/*   Updated: 2022/12/16 12:14:32 by grebin           ###   ########.fr       */
+/*   Updated: 2023/01/10 15:14:56 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/philo.h"
+#include "../../includes/philo.h"
 
 int	ft_atoi(const char *nptr)
 {

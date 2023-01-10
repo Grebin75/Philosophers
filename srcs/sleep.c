@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sleep.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:15:36 by grebin            #+#    #+#             */
-/*   Updated: 2023/01/08 19:40:35 by grebin           ###   ########.fr       */
+/*   Updated: 2023/01/10 15:17:01 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	gosleep(t_philo *philo)
 	start_sleep = current_time();
 	sleeping = 0;
 	if (!dead(philo))
-		printf("[%lums] %i is sleeping.\n", time_diff(this()->start, current_time()), philo->index);
+		printf("[%lums] %i is sleeping.\n", \
+		time_diff(this()->start, current_time()), philo->index);
 	while (!dead(philo) && sleeping <= (t_uli)this()->av[3])
 	{
 		sleeping = time_diff(start_sleep, current_time());
